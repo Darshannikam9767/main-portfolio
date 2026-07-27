@@ -31,7 +31,7 @@ const Navbar = () => {
         tl.current = gsap.timeline({ paused: true }).to(navRef.current, {
             xPercent: 0,
             duration: 1,
-            ease: "power3.out"
+            ease: "power3.in"
         }).to(linkRef.current, {
             autoAlpha: 1,
             x: 0,
@@ -129,7 +129,7 @@ const Navbar = () => {
             <div style={showMenuBtn ?
                 {clipPath:"circle(50% at 50% 50%)"}
                 :{clipPath:"circle(0% at 50% 50%)"}
-            } onClick={toggleMenu} className=' fixed flex flex-col z-60 items-center justify-center gap-1.5 transition-all duration-300 bg-black rounded-full cursor-pointer w-14 h-14 md:w-20 md:h-20 top-4 right-10 shadow-2xl shadow-black hover:bg-black/80'>
+            } onClick={toggleMenu} className=' fixed flex flex-col z-60 items-center justify-center gap-1.5 transition-all duration-300 bg-black rounded-full cursor-pointer w-14 h-14 md:w-20 md:h-20 top-4 right-10 shadow-2xl shadow-black hover:bg-black/80 active:scale-115'>
                 <span ref={topLineRef} className='block w-7 h-0.5 md:w-11 md:h-0.75 bg-white rounded-full origin-center'></span>
                 <span ref={bottomLineRef} className='block w-7 h-0.5 md:w-11 md:h-0.75 bg-white rounded-full origin-center'></span>
             </div>

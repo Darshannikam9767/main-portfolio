@@ -1,11 +1,43 @@
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
+import gsap from 'gsap'
+import {useGSAP} from '@gsap/react'
 
 export function Planet(props) {
   const { nodes, materials } = useGLTF('/models/Planet.glb')
+  const shapeContainer = useRef(null)
+  const shpereContainer = useRef(null)
+  const ringContainer = useRef(null)
+
+  useGSAP(()=>{
+    const tl = gsap.timeline()
+
+    tl.from(shapeContainer.current.position,{
+      y:5,
+      duration:3,
+      ease:"circ.out"
+    })
+    tl.from(shpereContainer.current.rotation,{
+      x:0,
+      y:Math.PI,
+      z:-Math.PI,
+      duration:10,
+      ease:"power1.inOut"
+    },"-=25%")
+
+    tl.from(ringContainer.current.rotation,{
+      x:0.8,
+      y:0,
+      z:0,
+      duration:10,
+      ease:"power1.inOut"
+    },"<")
+  },[])
+
   return (
-    <group {...props} dispose={null}>
-      <mesh
+    <group ref={shapeContainer} {...props} dispose={null}>
+      <group ref={shpereContainer}>
+        <mesh
         castShadow
         receiveShadow
         geometry={nodes.Sphere.geometry}
@@ -15,19 +47,20 @@ export function Planet(props) {
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Ring.geometry}
-        material={materials['Material.001']}
-        rotation={[-0.124, 0.123, -0.778]}
-        scale={2}
-      />
-      <mesh
-        castShadow
-        receiveShadow
         geometry={nodes.Sphere2.geometry}
         material={materials['Material.001']}
         position={[0.647, 1.03, -0.724]}
         rotation={[0, 0, 0.741]}
         scale={0.223}
+      />
+      </group>
+      <mesh ref={ringContainer}
+        castShadow
+        receiveShadow
+        geometry={nodes.Ring.geometry}
+        material={materials['Material.001']}
+        rotation={[-0.124, 0.123, -0.778]}
+        scale={2}
       />
     </group>
   )

@@ -15,11 +15,11 @@ const Hero = () => {
     unfair advantage through premium
     results driven web/apps`
 
-    const threeDModel = useRef(null)
     useGSAP(() => {
         const tl = gsap.timeline()
 
         tl.from(contextRef.current, {
+            delay:1,
             y: "50vh",
             duration: 1,
             ease: "circ.out"
@@ -31,17 +31,10 @@ const Hero = () => {
             duration: 1,
             ease: "circ.out"
         }, "<+0.2")
-
-        tl.from(threeDModel.current,{
-            opacity:0,
-            y:300,
-            duration:1,
-            ease:"circ.out"
-        },"<+1")
     }, [])
     return (
         <section id='home'
-            className='flex flex-col justify-end min-h-screen overflow-hidden'>
+            className=' relative flex flex-col justify-end min-h-screen overflow-hidden'>
             <div ref={contextRef}>
                 <div style={{
                     clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)"
@@ -64,8 +57,8 @@ const Hero = () => {
                 </div>
             </div>
 
-            <figure ref={threeDModel} className=' absolute inset-0 -z-50 w-screen h-screen'>
-                <Canvas
+            <figure className=' absolute inset-0 -z-50 w-screen h-screen'>
+                <Canvas className=' overflow-hidden'
                     shadows
                     camera={{
                         position: [0, 0, -10],
@@ -76,7 +69,7 @@ const Hero = () => {
                     <ambientLight intensity={0.5} />
                     <Suspense fallback={null}>
                         <Float speed={0.5}>
-                        <Planet scale={isMobile ? 0.7:0.99} />
+                        <Planet scale={isMobile ? 0.65:0.90} />
                     </Float>
                     </Suspense>
                     <Environment resolution={256}>

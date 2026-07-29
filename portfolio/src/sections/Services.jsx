@@ -3,12 +3,34 @@ import { useRef } from 'react'
 import AnimatedHeaderText from '../components/AnimatedHeaderText'
 import { servicesData } from '../constants'
 import { useMediaQuery } from 'react-responsive'
+import gsap from 'gsap'
+import {useGSAP} from '@gsap/react'
+import {ScrollTrigger} from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger)
 const Services = () => {
   const text = `I build secure, high-performance
   full-stack apps with smoothUX to
    drive growth not headaches.`
   const serviceRef = useRef([])
-  const isDesktop = useMediaQuery({ minWidth: "48rem" })
+  const isDesktop = useMediaQuery({ minWidth: 768})
+
+
+    useGSAP(()=>{
+      serviceRef.current.forEach((el)=>{
+        if(!el) return;
+
+        gsap.from(el,{
+          y:200,
+          scrollTrigger:{
+            trigger:el,
+            start:"top 80%"
+          },
+          duration:1,
+          ease:"circ.out"
+        })
+      })
+    },[])
+
   return (
     <section id='services' className='min-h-screen bg-black rounded-t-4xl isolate'>
       <AnimatedHeaderText subTitle={"Behind the scene, Beyond the screen"} title={"Service"} text={text} textColor={"text-white"} withScrollTrigger={true} />
@@ -19,8 +41,8 @@ const Services = () => {
             key={index}
             className=' sticky px-10 pt-6 pb-12 text-white bg-black border-t-2 border-white/30'
             style={isDesktop ? {
-              top: `calc(10vh + ${index * 6}rem)`,
-              marginBottom: `${(servicesData.length - index - 1) * 6}rem`,
+              top:`calc(10vh + ${index * 5}em)`,
+              marginBottom: `${(servicesData.length - index - 1) * 5}rem`,
               zIndex: index + 1,
             }
               : {

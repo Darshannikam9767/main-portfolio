@@ -17,7 +17,7 @@ const AnimatedTextLine = ({ text, className }) => {
                 ease:'back.out',
             })
         }
-    })
+    },[])
     return (
         <div ref={containerRef} className={className}>
             {lines.map((line,index)=>(

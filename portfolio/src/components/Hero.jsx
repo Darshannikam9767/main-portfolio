@@ -1,4 +1,4 @@
-import React, { Suspense, useRef } from 'react'
+import { Suspense, useRef } from 'react'
 import AnimatedTextLine from './AnimatedTextLine'
 
 import { Canvas } from '@react-three/fiber'
@@ -16,7 +16,7 @@ const Hero = () => {
     return (
         <section id='home'
             className=' relative flex flex-col justify-end min-h-screen overflow-hidden'>
-            <AnimatedHeaderText subTitle={"404 No bugs found"} title={"Darshan Nikam"} text={text} textColor={"text-black"} />
+            <AnimatedHeaderText subTitle={"404 No bugs found"} title={"Darshan Nikam"} text={text} textColor={"text-black"} isDelay={true} />
             <figure className=' absolute inset-0 -z-50 w-screen h-screen'>
                 <Canvas className=' overflow-hidden'
                     shadows

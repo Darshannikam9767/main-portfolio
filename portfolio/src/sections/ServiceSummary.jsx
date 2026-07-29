@@ -9,7 +9,7 @@ const Services = () => {
             xPercent:20,
             scrollTrigger:{
                 target:"#title-service-1",
-                scrub:2,
+                scrub:true,
                 
             }
         })
@@ -18,7 +18,7 @@ const Services = () => {
             xPercent:-30,
             scrollTrigger:{
                 target:"#title-service-2",
-                scrub:2,
+                scrub:true,
                 
             }
         })
@@ -27,7 +27,7 @@ const Services = () => {
             xPercent:100,
             scrollTrigger:{
                 target:"#title-service-3",
-                scrub:2,
+                scrub:true,
                 
             }
         })
@@ -36,7 +36,7 @@ const Services = () => {
             xPercent:-100,
             scrollTrigger:{
                 target:"#title-service-4",
-                scrub:2,
+                scrub:true,
                 
             }
         })

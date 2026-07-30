@@ -16,11 +16,25 @@ const Services = () => {
 
 
     useGSAP(()=>{
+
+
+      gsap.from("#services",{
+        scale:0.90,
+        ease:"power1.inOut",
+        scrollTrigger:{
+          trigger:"#services",
+          start: "top 80%",
+                end: "top 20%",
+                scrub: true,
+        }
+      })
+
+
       serviceRef.current.forEach((el)=>{
         if(!el) return;
 
         gsap.from(el,{
-          y:200,
+          opacity:0.50,
           scrollTrigger:{
             trigger:el,
             start:"top 80%"

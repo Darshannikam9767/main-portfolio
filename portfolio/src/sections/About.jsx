@@ -11,13 +11,17 @@ const About = () => {
     for prototype to production`
 
     const aboutText = `Obsessed with building fast, intuitive apps-from pixel-perfect React UIs to bulletproof serverless backends. Every line of code is promise: quality that users feel. 
-    When I'am not shipping:⚡ Open-sourcing my latest experiment (or hacking on yours) 🎥 Teaching devs on Twitch/Youtube-because rising tides lift all ships 🧗 Rock climbing (problem-solving with real stakes) 🎸 Struming chords while CI pipelines pass (multitasking at its finest)`
+    When I'am not shipping:
+    ⚡ Open-sourcing my latest experiment (or hacking on yours) 
+    🎥 Teaching devs on Twitch/Youtube-because rising tides lift all ships 
+    🧗 Rock climbing (problem-solving with real stakes) 
+    🎸 Struming chords while CI pipelines pass (multitasking at its finest)`
 
     const imgRef = useRef(null)
 
     useGSAP(() => {
         gsap.to("#about", {
-            scale: 0.95,
+            scale: 0.90,
             scrollTrigger: {
                 trigger: "#about",
                 start: "bottom 80%",

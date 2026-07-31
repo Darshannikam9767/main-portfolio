@@ -4,6 +4,8 @@ import { projects } from "../constants"
 import { Icon } from '@iconify/react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
+import {ScrollTrigger} from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger)
 const Work = () => {
 
   const text = `Featured projects that have been meticulously
@@ -29,6 +31,18 @@ const Work = () => {
     moveY.current = gsap.quickTo(previewRef.current,"y",{
       duration:2,
       ease:"power3.out"
+    })
+
+    gsap.from("#project",{
+      y:100,
+      opacity:0,
+      delay:0.5,
+      duration:1,
+      stagger:0.3,
+      ease:"back.out",
+      scrollTrigger:{
+        trigger:"#project"
+      }
     })
   },[])
 

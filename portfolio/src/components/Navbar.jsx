@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { socials } from '../constants/index'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
-import {Link} from 'react-scroll'
+import { Link } from 'react-scroll'
 const Navbar = () => {
 
     const navRef = useRef(null)
@@ -23,9 +23,9 @@ const Navbar = () => {
             x: -20,
             autoAlpha: 0
         })
-        gsap.set(contactRef.current, { 
-            x: -20, 
-            autoAlpha: 0 
+        gsap.set(contactRef.current, {
+            x: -20,
+            autoAlpha: 0
         })
 
         tl.current = gsap.timeline({ paused: true }).to(navRef.current, {
@@ -57,14 +57,14 @@ const Navbar = () => {
             y: -4,
             duration: 0.3,
             ease: "power2.inOut"
-        },"<")
-    },[])
+        }, "<")
+    }, [])
 
 
-    useEffect(()=>{
+    useEffect(() => {
         let lastScrollY = window.scrollY
 
-        const handleScroll = ()=>{
+        const handleScroll = () => {
             const currentScrollY = window.scrollY
 
             setShowMenuBtn(currentScrollY <= lastScrollY ||
@@ -73,12 +73,12 @@ const Navbar = () => {
 
             lastScrollY = currentScrollY
         }
-        window.addEventListener("scroll",handleScroll,{
-            passive:true
+        window.addEventListener("scroll", handleScroll, {
+            passive: true
         })
 
-        return ()=> window.removeEventListener("scroll",handleScroll)
-    },[])
+        return () => window.removeEventListener("scroll", handleScroll)
+    }, [])
 
     const toggleMenu = () => {
         if (isOpen) {
@@ -93,18 +93,23 @@ const Navbar = () => {
 
     return (
         <>
-            <nav ref={navRef} className='w-full h-full fixed z-50 flex flex-col justify-between px-10 uppercase bg-black text-white/60 py-20 gap-y-5 md:w-1/2 md:left-1/2'>
-                <div className='flex flex-col text-[6vw] md:text-[7vw] lg:text-[4vw] gap-y-[1vh]'>
-                    {["home", "services", "about", "work", "contact"].map((section, index) => (
-                        <div key={index} ref={(el) => (linkRef.current[index] = el)}>
-                            <Link className=' transition-all duration-300 cursor-pointer hover:text-white' 
-                            to={`${section}`}
-                            smooth
-                            offset={0}
-                            duration={600}
-                            >{section}</Link></div>
-                    ))}
+            <nav ref={navRef} className='w-full h-full fixed z-50 flex flex-col justify-between px-10 uppercase bg-black text-white/60 py-[10vh] sm:py-[5vh] lg:py-[5vh] gap-y-5 md:w-1/2 md:left-1/2'>
+                <div className='flex flex-col text-[6vw] md:text-[5vw] lg:text-[4vw]'>
+                    {["home", "services", "about", "work", "contact"]
+                        .map((section, index) => (
+                            <div key={index} ref={(el) => (linkRef.current[index] = el)}>
+
+                                <Link className=' transition-all duration-300 cursor-pointer hover:text-white '
+                                    to={`${section}`}
+                                    smooth
+                                    offset={0}
+                                    duration={600}
+                                >{section}</Link>
+                            </div>
+                        ))}
                 </div>
+
+
                 <div ref={contactRef} className='flex flex-col flex-wrap justify-between gap-8 md:flex-row'>
                     <div className='font-light'>
                         <p className=' tracking-wider text-white/50'>E-mail</p>
@@ -124,14 +129,20 @@ const Navbar = () => {
                         </div>
                     </div>
                 </div>
+
             </nav>
 
-            <div style={showMenuBtn ?
-                {clipPath:"circle(50% at 50% 50%)"}
-                :{clipPath:"circle(0% at 50% 50%)"}
-            } onClick={toggleMenu} className=' fixed flex flex-col z-60 items-center justify-center gap-1.5 transition-all duration-300 bg-black rounded-full cursor-pointer w-14 h-14 md:w-20 md:h-20 top-4 right-10 shadow-2xl shadow-black hover:bg-black/80 active:scale-115'>
-                <span ref={topLineRef} className='block w-7 h-0.5 md:w-11 md:h-0.75 bg-white rounded-full origin-center'></span>
-                <span ref={bottomLineRef} className='block w-7 h-0.5 md:w-11 md:h-0.75 bg-white rounded-full origin-center'></span>
+            <div
+                style={showMenuBtn ?
+                    { clipPath: "circle(50% at 50% 50%)" }
+                    : { clipPath: "circle(0% at 50% 50%)" }
+                }
+                onClick={toggleMenu} 
+                className=' fixed flex flex-col z-60 items-center justify-center gap-1.5 transition-all duration-300 bg-black rounded-full cursor-pointer w-14 h-14 md:w-20 md:h-20 top-4 right-10 shadow-2xl shadow-black hover:bg-black/80 hover:scale-95 active:scale-115'>
+                <span ref={topLineRef}
+                    className='block w-7 h-0.5 md:w-11 md:h-1 bg-white rounded-full origin-center'/>
+                <span ref={bottomLineRef}
+                    className='block w-7 h-0.5 md:w-11 md:h-1 bg-white rounded-full origin-center'/>
             </div>
         </>
     )

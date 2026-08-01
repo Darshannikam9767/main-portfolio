@@ -32,11 +32,11 @@ body {
 }
 
 @utility banner-text-responsive {
-  @apply text-[8vw] sm:text-[8vw] md:text-[9vw] lg:text-[10vw] leading-9 sm:leading-16 lg:leading-[8vw];
+  @apply text-[9vw] sm:text-[10vw] md:text-[9vw] lg:text-[10vw] leading-[10vw] sm:leading-16 md:leading-[8vw] lg:leading-[8vw];
 }
 
 @utility value-text-responsive {
-  @apply text-[3vw] md:text-[26px] lg:text-[32px];
+  @apply text-[3vw] sm:text-[3vw] md:text-[2.5vw] lg:text-[2vw];
 }
 
 @utility marquee-text-responsive {

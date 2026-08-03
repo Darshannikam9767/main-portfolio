@@ -52,7 +52,7 @@ const AnimatedHeaderText = ({subTitle, title, text, textColor, withScrollTrigger
             <div className={`relative px-10 ${textColor}`}>
                 <div className=' absolute inset-x-0 border-t-2' />
                 <div className='py-12 sm:py-16 text-end overflow-hidden'>
-                    <AnimatedTextLine className={'font-light uppercase value-text-responsive'} text={text} />
+                    <AnimatedTextLine className={'font-light uppercase value-text-responsive'} text={text}  />
                 </div>
             </div>
         </div>

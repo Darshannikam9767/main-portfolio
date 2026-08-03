@@ -13,6 +13,13 @@ const Hero = () => {
         unfair advantage through premium
         results driven web/apps`
 
+    const dummyClock = {
+        getDelta: () => 0,
+        getElapsedTime: () => 0,
+        start: () => { },
+        stop: () => { }
+    };
+
     return (
         <section id='home'
             className=' relative flex flex-col justify-end min-h-screen overflow-hidden'>
@@ -20,6 +27,7 @@ const Hero = () => {
             <figure className=' absolute inset-0 -z-50 w-screen h-screen'>
                 <Canvas className=' overflow-hidden'
                     shadows
+                    clock = {dummyClock}
                     camera={{
                         position: [0, 0, -10],
                         fov: 17.5,

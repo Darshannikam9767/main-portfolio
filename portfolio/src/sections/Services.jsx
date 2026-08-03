@@ -34,11 +34,12 @@ const Services = () => {
 
         gsap.from(el,{
           opacity:0.50,
+          stagger:0.4,
           scrollTrigger:{
             trigger:el,
             start:"top 80%"
           },
-          duration:1,
+          // duration:1,
           ease:"circ.out"
         })
       })

@@ -4,7 +4,7 @@ import { useGSAP } from '@gsap/react'
 import {ScrollTrigger} from 'gsap/ScrollTrigger'
 import AnimatedTextLine from './AnimatedTextLine'
 gsap.registerPlugin(ScrollTrigger)
-const AnimatedHeaderText = ({subTitle, title, text, textColor, withScrollTrigger = false, isDelay = false}) => {
+const AnimatedHeaderText = ({subTitle, title, text, textColor, withScrollTrigger = false, isDelay = false,}) => {
 
     const contextRef = useRef(null)
     const headerRef = useRef(null)

@@ -36,7 +36,7 @@ const Services = () => {
         })
 
         gsap.to("#title-service-4", {
-            xPercent: -200,
+            xPercent: isMobile ? -200 : -100,
             scrollTrigger: {
                 target: "#title-service-4",
                 scrub: true,

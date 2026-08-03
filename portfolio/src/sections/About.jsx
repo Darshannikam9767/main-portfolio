@@ -44,13 +44,13 @@ const About = () => {
     }, [])
     return (
         <section id="about"
-            className="min-h-screen bg-black rounded-b-4xl">
+            className="min-h-screen bg-black rounded-b-4xl pt-[10vh]">
             <AnimatedHeaderText subTitle={"Code with purpose, Built to scale"} title={"About"} text={text} textColor={"text-white"} withScrollTrigger={true} />
             <div
                 ref={imgRef}
                 className="flex flex-col items-center justify-between gap-16 px-10 pb-16 text-xl font-light tracking-wide lg:flex-row md:text-2xl lg:text-3xl text-white/60">
                 <img src="images/man.jpg" alt="man"
-                    className="w-md rounded-3xl" />
+                    className="w-xs sm:w-md md:w-sm lg:w-sm rounded-3xl" />
                 <AnimatedTextLine text={aboutText} className={"w-full"} />
             </div>
         </section>

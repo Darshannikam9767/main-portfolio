@@ -2,7 +2,6 @@
 import { useRef } from 'react'
 import AnimatedHeaderText from '../components/AnimatedHeaderText'
 import { servicesData } from '../constants'
-import { useMediaQuery } from 'react-responsive'
 import gsap from 'gsap'
 import {useGSAP} from '@gsap/react'
 import {ScrollTrigger} from 'gsap/ScrollTrigger'
@@ -12,7 +11,7 @@ const Services = () => {
   full-stack apps with smoothUX to
    drive growth not headaches.`
   const serviceRef = useRef([])
-  const isDesktop = useMediaQuery({ minWidth: 768})
+  
 
 
     useGSAP(()=>{
@@ -54,12 +53,7 @@ const Services = () => {
             ref={(el) => (serviceRef.current[index] = el)}
             key={index}
             className=' sticky px-10 pt-6 pb-12 text-white bg-black border-t-2 border-white/30'
-            style={isDesktop ? {
-              top:`calc(10vh + ${index * 5}em)`,
-              marginBottom: `${(servicesData.length - index - 1) * 5}rem`,
-              zIndex: index + 1,
-            }
-              : {
+            style={{
                 top: 0,
                 zIndex: index + 1
               }}>

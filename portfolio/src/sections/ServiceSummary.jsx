@@ -36,7 +36,7 @@ const Services = () => {
         })
 
         gsap.to("#title-service-4", {
-            xPercent: -100,
+            xPercent: -200,
             scrollTrigger: {
                 target: "#title-service-4",
                 scrub: true,
@@ -72,7 +72,7 @@ const Services = () => {
                 <p>Scalability</p>
             </div>
 
-            <div id='title-service-4' className='translate-x-48'>
+            <div id='title-service-4' className='translate-x-42'>
                 <p>Databases</p>
             </div>
         </section>

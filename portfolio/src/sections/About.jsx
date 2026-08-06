@@ -6,16 +6,16 @@ import {ScrollTrigger} from 'gsap/ScrollTrigger'
 import { useGSAP } from "@gsap/react"
 gsap.registerPlugin(ScrollTrigger)
 const About = () => {
-    const text = `Passionate about clean architecture
-    I build scalable, High-performance solutions
-    for prototype to production`
+    const text = `self-directed full-stack developer crafting robust APIs and
+    responsive interfaces, delivering scalable solutions
+    from prototype to production.`
 
-    const aboutText = `Obsessed with building fast, intuitive apps-from pixel-perfect React UIs to bulletproof serverless backends. Every line of code is promise: quality that users feel. 
+    const aboutText = `Full-Stack Developer and BCA graduate (8.46 CGPA). I build complete web applications, pairing robust Python and Java backends with dynamic React interfaces. 
     When I'am not shipping:
-    ⚡ Open-sourcing my latest experiment (or hacking on yours) 
-    🎥 Teaching devs on Twitch/Youtube-because rising tides lift all ships 
-    🧗 Rock climbing (problem-solving with real stakes) 
-    🎸 Struming chords while CI pipelines pass (multitasking at its finest)`
+    ⚡ Experimenting with react and tailwind to build stunning, user-friendly web interfaces 
+    ⚙️ Architecting robust backend systems and REST APIs with Python, Flask, and PostgreSQL
+    🌌 Animating the web with GSAP and Three.js for that perfect scroll experience
+    🎓 Deep diving into advanced Data Structures and Object-Oriented Programming`
 
     const imgRef = useRef(null)
 
@@ -50,7 +50,7 @@ const About = () => {
             <AnimatedHeaderText subTitle={"Code with purpose, Built to scale"} title={"About"} text={text} textColor={"text-white"} withScrollTrigger={true} />
             <div
                 className="flex flex-col items-center justify-between gap-16 px-10 pb-16 text-xl font-light tracking-wide lg:flex-row md:text-2xl lg:text-3xl text-white/60">
-                <img ref={imgRef} src="images/man.jpg" alt="man"
+                <img ref={imgRef} src="images/my_img.png" alt="man"
                     className="w-xs sm:w-md md:w-sm lg:w-sm rounded-3xl" />
                 <AnimatedTextLine text={aboutText} className={"w-full"} />
             </div>

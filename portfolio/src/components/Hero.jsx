@@ -9,9 +9,9 @@ import AnimatedHeaderText from './AnimatedHeaderText'
 const Hero = () => {
 
     const isMobile = useMediaQuery({ maxWidth: 853 })
-    const text = `i help growing brands and startups gain an
-        unfair advantage through premium
-        results driven web/apps`
+    const text = `i build full-stack web applications —
+    clean code, smart features,
+    shipped from idea to production.`
 
     const dummyClock = {
         getDelta: () => 0,

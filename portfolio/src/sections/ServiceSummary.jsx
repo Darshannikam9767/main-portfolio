@@ -69,7 +69,7 @@ const Services = () => {
                 <div className='bg-gold w-10 h-1 md:w-32 rounded-full' />
                 <p className=' italic'>Frontend</p>
                 <div className='bg-gold w-10 h-1 md:w-32 rounded-full' />
-                <p>Scalability</p>
+                <p>Automation</p>
             </div>
 
             <div id='title-service-4' className='translate-x-42'>

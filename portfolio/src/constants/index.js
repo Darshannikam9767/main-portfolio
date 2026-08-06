@@ -1,181 +1,138 @@
 // index.js
+
 export const servicesData = [
   {
-    title: "FullStack Development",
+    title: "Full-Stack Web Development",
     description:
-      "Your business deserves a fast, secure, and future-proof digital foundation. I develop custom web apps with clean architecture, optimized databases, and seamless integrations—ensuring reliability at every layer.",
+      "I build complete web applications from database to browser — REST APIs in Flask and Java, clean relational schemas in PostgreSQL, and responsive React interfaces that tie it all together.",
     items: [
       {
         title: "Backend Engineering",
-        description: "(REST/GraphQL APIs, Microservices, Auth Systems)",
+        description: "(Flask & Java Servlets, REST API Design, MVC Architecture)",
       },
       {
-        title: "Frontend Excellence",
-        description: "(React, Vue, TypeScript, Interactive UI/UX)",
+        title: "Frontend Development",
+        description: "(React, JavaScript, Responsive UI with Tailwind CSS)",
       },
       {
         title: "Database Design",
-        description: "(SQL/NoSQL Optimization, Scalable Structures)",
+        description: "(PostgreSQL, SQLAlchemy ORM, Normalized Schema Design)",
       },
     ],
   },
   {
-    title: "DevOps & Cloud Solutions",
+    title: "Secure Authentication & Access Control",
     description:
-      "Deploying software shouldn't be a gamble. I automate infrastructure, enforce security, and leverage cloud platforms (AWS/Azure) to keep your app running smoothly—24/7, at any scale.",
+      "Login systems are where trust is won or lost. I implement hashed password storage, OTP-based recovery flows, and role-based session access so only the right people see the right data.",
     items: [
       {
-        title: "CI/CD Pipelines",
-        description: "(GitHub Actions, Docker, Kubernetes)",
+        title: "Password Security",
+        description: "(Werkzeug Hashing, OTP-Based Reset Flows)",
       },
       {
-        title: "Server Management ",
-        description: "(Linux, Nginx, Load Balancing)",
+        title: "Role-Based Access",
+        description: "(HttpSession Management, Admin/Student Permissions)",
       },
       {
-        title: "Performance Tuning",
-        description: "(Caching, Compression, Lighthouse 90+ Scores)",
+        title: "Injection Prevention",
+        description: "(Parameterized Queries, JDBC Best Practices)",
       },
     ],
   },
   {
-    title: "Security & Optimization",
+    title: "AI & Intelligent Features",
     description:
-      "Slow or hacked apps destroy trust. I harden security (XSS/SQLI protection, OAuth) and optimize bottlenecks so your app stays fast, safe, and scalable as you grow.",
+      "Not every problem needs a hardcoded answer. I integrate NLP techniques like TF-IDF and cosine similarity so features understand user intent instead of just matching keywords.",
     items: [
       {
-        title: "Code Audits",
-        description: "(Refactoring, Tech Debt Cleanup)",
+        title: "NLP-Based Matching",
+        description: "(TF-IDF Vectorization, Cosine Similarity with scikit-learn)",
       },
       {
-        title: "Pen Testing",
-        description: "(Vulnerability Assessments)",
+        title: "Smart Automation",
+        description: "(APScheduler, Automated Logging & Reporting)",
       },
       {
-        title: "SEO Tech Stack",
-        description: "(SSR, Metadata, Structured Data)",
+        title: "Data Processing",
+        description: "(Pandas & NumPy for Data Handling)",
       },
     ],
   },
   {
-    title: "Web & Mobile Apps",
+    title: "Admin Dashboards & CRUD Systems",
     description:
-      "A clunky interface can sink even the best ideas. I craft responsive, pixel perfect web and mobile apps (React Native/Flutter) that users love—bridging design and functionality seamlessly.",
+      "Most real-world apps live and die by their admin tools. I build multi-module dashboards with real-time CRUD, clean REST endpoints, and workflows that make managing data painless.",
     items: [
       {
-        title: "Cross-Platform Apps",
-        description: "(Single codebase for iOS/Android/Web)",
+        title: "Dashboard Development",
+        description: "(Real-Time CRUD via Fetch API & REST)",
       },
       {
-        title: "PWAs",
-        description: "(Offline mode, Push Notifications)",
+        title: "Multi-Module Systems",
+        description: "(Role-Based Portals, Session-Driven Workflows)",
       },
       {
-        title: "E-Commerce",
-        description: "(Checkout flows, Payment Gateways, Inventory APIs)",
+        title: "API Integration",
+        description: "(RESTful Endpoints, Postman-Tested Reliability)",
       },
     ],
   },
 ];
+
 export const projects = [
   {
     id: 1,
-    name: "Mobile Accessories E-commerce",
+    name: "Campus Buddy — AI-Based College Chatbot",
     description:
-      "An online store specializing in phone accessories including cases, chargers, cables, and power banks with MagSafe compatibility.",
-    href: "",
-    image: "/assets/projects/mobile-accessories-store.jpg",
+      "An AI-powered chatbot for college FAQs, built on a Flask REST API with 12+ endpoints. Uses TF-IDF and cosine similarity for intent matching, with unmatched queries auto-logged for continuous improvement.",
+    href: "", // TODO: add live demo or GitHub repo link
+    image: "/assets/projects/mobile-accessories-store.jpg", // TODO: swap for a real Campus Buddy screenshot
     bgImage: "/assets/backgrounds/blanket.jpg",
     frameworks: [
-      { id: 1, name: "React" },
-      { id: 2, name: "Next.js" },
-      { id: 3, name: "Node.js" },
-      { id: 4, name: "MongoDB" },
-      { id: 5, name: "Tailwind CSS" },
+      { id: 1, name: "Flask" },
+      { id: 2, name: "PostgreSQL" },
+      { id: 3, name: "scikit-learn" },
+      { id: 4, name: "Supabase" },
+      { id: 5, name: "JavaScript" },
     ],
   },
   {
     id: 2,
-    name: "Plant Shop E-commerce",
+    name: "Admin Dashboard — Chatbot Management Interface",
     description:
-      "An online store specializing in rare and decorative plants with a clean, user-friendly interface.",
-    href: "",
-    image: "/assets/projects/plant-shop.jpg",
-    bgImage: "/assets/backgrounds/curtains.jpg",
+      "A responsive single-page admin panel with full CRUD for FAQs, announcements, teachers, and departments — all powered by the Fetch API with real-time table updates.",
+    href: "", // TODO: add live demo or GitHub repo link
+    image: "/assets/projects/electronics-store.jpg", // TODO: swap for a real Admin Dashboard screenshot
+    bgImage: "/assets/backgrounds/table.jpg",
     frameworks: [
-      { id: 1, name: "React" },
-      { id: 2, name: "Next.js" },
-      { id: 3, name: "Stripe API" },
-      { id: 4, name: "Tailwind CSS" },
+      { id: 1, name: "HTML" },
+      { id: 2, name: "CSS" },
+      { id: 3, name: "JavaScript" },
+      { id: 4, name: "Fetch API" },
+      { id: 5, name: "REST" },
     ],
   },
   {
     id: 3,
-    name: "Apple Tech Marketplace",
+    name: "FutureTech ERP — College Management System",
     description:
-      "An e-commerce platform for Apple products and accessories with deals and category filtering.",
-    href: "",
-    image: "/assets/projects/apple-tech-store.jpg",
+      "A role-based college management system built with 29 Java Servlet classes across 5 modules: student registration, course management, fee tracking, assignment review, and admin settings.",
+    href: "", // TODO: add live demo or GitHub repo link
+    image: "/assets/projects/apple-tech-store.jpg", // TODO: swap for a real FutureTech ERP screenshot
     bgImage: "/assets/backgrounds/map.jpg",
     frameworks: [
-      { id: 1, name: "Blazor" },
-      { id: 2, name: "ASP.NET Core" },
-      { id: 3, name: "SQL Server" },
-      { id: 4, name: "Bootstrap" },
-    ],
-  },
-  {
-    id: 4,
-    name: "Electronics & Gadgets Store",
-    description:
-      "A multi-category online shop featuring electronics, home appliances, and gaming gear with special offers.",
-    href: "",
-    image: "/assets/projects/electronics-store.jpg",
-    bgImage: "/assets/backgrounds/poster.jpg",
-    frameworks: [
-      { id: 1, name: "Vue.js" },
-      { id: 2, name: "Laravel" },
-      { id: 3, name: "MySQL" },
-      { id: 4, name: "SCSS" },
-    ],
-  },
-  {
-    id: 5,
-    name: "Home Decor Marketplace",
-    description:
-      "A curated collection of designer home decor items, including furniture and artisan vases.",
-    href: "",
-    image: "/assets/projects/home-decor-store.jpg",
-    bgImage: "/assets/backgrounds/table.jpg",
-    frameworks: [
-      { id: 1, name: "Angular" },
-      { id: 2, name: "Firebase" },
-      { id: 3, name: "GraphQL" },
-      { id: 4, name: "Material UI" },
-    ],
-  },
-  {
-    id: 6,
-    name: "Digital Game Store",
-    description:
-      "A gaming platform featuring discounted titles, top sellers, and genre-based browsing.",
-    href: "",
-    image: "/assets/projects/game-store.jpg",
-    bgImage: "/assets/backgrounds/curtains.jpg",
-    frameworks: [
-      { id: 1, name: "Svelte" },
-      { id: 2, name: "Node.js" },
-      { id: 3, name: "MongoDB" },
-      { id: 4, name: "Chakra UI" },
+      { id: 1, name: "Java" },
+      { id: 2, name: "Jakarta EE" },
+      { id: 3, name: "Servlets" },
+      { id: 4, name: "JDBC" },
     ],
   },
 ];
+
+// YouTube removed — not on your resume and previously pointed to the
+// template author's account. Add it back in this same shape if you want it.
 export const socials = [
-  { name: "Instagram", href: "https://www.instagram.com/ali.sanatidev/reels/" },
-  {
-    name: "Youtube",
-    href: "https://www.youtube.com/channel/UCZhtUWTtk3bGJiMPN9T4HWA",
-  },
-  { name: "LinkedIn", href: "https://www.linkedin.com/in/ali-sanati/" },
-  { name: "GitHub", href: "https://github.com/Ali-Sanati" },
+  { name: "GitHub", href: "https://github.com/Darshannikam9767" },
+  { name: "LinkedIn", href: "https://linkedin.com/in/darshannikam" },
+  { name: "Instagram", href: "" }, // TODO: add your real Instagram URL
 ];

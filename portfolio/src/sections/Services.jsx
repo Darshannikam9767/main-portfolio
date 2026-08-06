@@ -7,9 +7,9 @@ import {useGSAP} from '@gsap/react'
 import {ScrollTrigger} from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 const Services = () => {
-  const text = `I build secure, high-performance
-  full-stack apps with smoothUX to
-   drive growth not headaches.`
+  const text = `I build secure, well-structured full-
+  stack apps with clean code and smooth
+  ux-no shortcuts, no headaches.`
   const serviceRef = useRef([])
   
 

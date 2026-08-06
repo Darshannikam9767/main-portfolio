@@ -86,7 +86,7 @@ export const projects = [
     description:
       "An AI-powered chatbot for college FAQs, built on a Flask REST API with 12+ endpoints. Uses TF-IDF and cosine similarity for intent matching, with unmatched queries auto-logged for continuous improvement.",
     href: "", // TODO: add live demo or GitHub repo link
-    image: "/assets/projects/mobile-accessories-store.jpg", // TODO: swap for a real Campus Buddy screenshot
+    image: "/assets/projects/chat_side.png", // TODO: swap for a real Campus Buddy screenshot
     bgImage: "/assets/backgrounds/blanket.jpg",
     frameworks: [
       { id: 1, name: "Flask" },
@@ -102,7 +102,7 @@ export const projects = [
     description:
       "A responsive single-page admin panel with full CRUD for FAQs, announcements, teachers, and departments — all powered by the Fetch API with real-time table updates.",
     href: "", // TODO: add live demo or GitHub repo link
-    image: "/assets/projects/electronics-store.jpg", // TODO: swap for a real Admin Dashboard screenshot
+    image: "/assets/projects/admin_side.png", // TODO: swap for a real Admin Dashboard screenshot
     bgImage: "/assets/backgrounds/table.jpg",
     frameworks: [
       { id: 1, name: "HTML" },
@@ -114,11 +114,26 @@ export const projects = [
   },
   {
     id: 3,
-    name: "FutureTech ERP — College Management System",
+    name: "FutureTech ERP — Institute Management System (Student side)",
     description:
       "A role-based college management system built with 29 Java Servlet classes across 5 modules: student registration, course management, fee tracking, assignment review, and admin settings.",
     href: "", // TODO: add live demo or GitHub repo link
-    image: "/assets/projects/apple-tech-store.jpg", // TODO: swap for a real FutureTech ERP screenshot
+    image: "/assets/projects/admin_side.png", // TODO: swap for a real FutureTech ERP screenshot
+    bgImage: "/assets/backgrounds/map.jpg",
+    frameworks: [
+      { id: 1, name: "Java" },
+      { id: 2, name: "Jakarta EE" },
+      { id: 3, name: "Servlets" },
+      { id: 4, name: "JDBC" },
+    ],
+  },
+  {
+    id: 4,
+    name: "FutureTech ERP — Institute Management System (Admin side)",
+    description:
+      "A role-based college management system built with 29 Java Servlet classes across 5 modules: student registration, course management, fee tracking, assignment review, and admin settings.",
+    href: "", // TODO: add live demo or GitHub repo link
+    image: "/assets/projects/admin_side.png", // TODO: swap for a real FutureTech ERP screenshot
     bgImage: "/assets/backgrounds/map.jpg",
     frameworks: [
       { id: 1, name: "Java" },

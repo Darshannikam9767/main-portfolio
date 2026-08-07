@@ -9,7 +9,7 @@ import AnimatedHeaderText from './AnimatedHeaderText'
 const Planet = lazy(() => import('./Planet').then(module => ({ default: module.Planet })))
 const Hero = () => {
 
-    const isMobile = useMediaQuery({ maxWidth: 853 })
+    const isMobile = useMediaQuery({ maxWidth: 768 })
     const text = `i build full-stack web applications —
     clean code, smart features,
     shipped from idea to production.`
@@ -34,7 +34,7 @@ const Hero = () => {
                             <Planet scale={isMobile ? 0.60 : 0.90} />
                         </Float>
                     </Suspense>
-                    <Environment resolution={256}>
+                    <Environment resolution={128}>
                         <group rotation={[Math.PI / 3, 4, 1]}>
                             <Lightformer form={"circle"}
                                 intensity={2}

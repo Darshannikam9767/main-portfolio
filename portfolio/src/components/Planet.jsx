@@ -32,21 +32,18 @@ export function Planet(props) {
       duration:10,
       ease:"power1.inOut"
     },"<")
-  },[])
+  },{scope : shapeContainer})
 
   return (
     <group ref={shapeContainer} {...props} dispose={null}>
       <group ref={shpereContainer}>
         <mesh
-        castShadow
-        receiveShadow
+        
         geometry={nodes.Sphere.geometry}
         material={materials['Material.002']}
         rotation={[0, 0, 0.741]}
       />
       <mesh
-        castShadow
-        receiveShadow
         geometry={nodes.Sphere2.geometry}
         material={materials['Material.001']}
         position={[0.647, 1.03, -0.724]}
@@ -55,8 +52,6 @@ export function Planet(props) {
       />
       </group>
       <mesh ref={ringContainer}
-        castShadow
-        receiveShadow
         geometry={nodes.Ring.geometry}
         material={materials['Material.001']}
         rotation={[-0.124, 0.123, -0.778]}

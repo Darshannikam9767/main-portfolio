@@ -82,7 +82,7 @@ export const servicesData = [
 export const projects = [
   {
     id: 1,
-    name: "Campus Buddy — AI-Based College Chatbot",
+    name: "Campus Buddy : AI-Based College Chatbot",
     description:
       "An AI-powered chatbot for college FAQs, built on a Flask REST API with 12+ endpoints. Uses TF-IDF and cosine similarity for intent matching, with unmatched queries auto-logged for continuous improvement.",
     href: "", // TODO: add live demo or GitHub repo link
@@ -98,7 +98,7 @@ export const projects = [
   },
   {
     id: 2,
-    name: "Admin Dashboard — Chatbot Management Interface",
+    name: "Admin Dashboard : Chatbot Management Interface",
     description:
       "A responsive single-page admin panel with full CRUD for FAQs, announcements, teachers, and departments — all powered by the Fetch API with real-time table updates.",
     href: "", // TODO: add live demo or GitHub repo link
@@ -114,11 +114,11 @@ export const projects = [
   },
   {
     id: 3,
-    name: "FutureTech ERP — Institute Management System (Student side)",
+    name: "FutureTech ERP: Student Academic Progress Dashboard",
     description:
-      "A role-based college management system built with 29 Java Servlet classes across 5 modules: student registration, course management, fee tracking, assignment review, and admin settings.",
+      "A student-facing portal built with Java Servlets offering a personalized dashboard to track training progress, view module-wise course completion, manage assignments, and monitor fee history.",
     href: "", // TODO: add live demo or GitHub repo link
-    image: "/assets/projects/admin_side.png", // TODO: swap for a real FutureTech ERP screenshot
+    image: "/assets/projects/erp_student.png", // TODO: swap for a real FutureTech ERP screenshot
     bgImage: "/assets/backgrounds/map.jpg",
     frameworks: [
       { id: 1, name: "Java" },
@@ -129,11 +129,11 @@ export const projects = [
   },
   {
     id: 4,
-    name: "FutureTech ERP — Institute Management System (Admin side)",
+    name: "FutureTech ERP: Institute Operations Control Center",
     description:
-      "A role-based college management system built with 29 Java Servlet classes across 5 modules: student registration, course management, fee tracking, assignment review, and admin settings.",
+      "An administrative dashboard built with Java Servlets designed to oversee institute operations, featuring real-time metrics for active students, revenue tracking, fee management, and recent student activity monitoring.",
     href: "", // TODO: add live demo or GitHub repo link
-    image: "/assets/projects/admin_side.png", // TODO: swap for a real FutureTech ERP screenshot
+    image: "/assets/projects/erp_admin.png", // TODO: swap for a real FutureTech ERP screenshot
     bgImage: "/assets/backgrounds/map.jpg",
     frameworks: [
       { id: 1, name: "Java" },

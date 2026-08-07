@@ -8,9 +8,9 @@ import {ScrollTrigger} from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 const Work = () => {
 
-  const text = `Featured projects that have been meticulously
-  crafted with passion to drive
-  results and impact.`
+  const text = `Here are my featured projects built carefully with passion,
+  and hard work to solve real problems,
+  delivering truly great result.`
 
   const previewRef = useRef(null)
   const [currentIndex, setCurrentIndex] = useState(null)

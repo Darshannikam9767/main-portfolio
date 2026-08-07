@@ -20,7 +20,7 @@ const AnimatedHeaderText = ({subTitle, title, text, textColor, withScrollTrigger
         })
 
         tl.from(contextRef.current, {
-            delay:isDelay ? 2 : undefined,
+            delay:isDelay ? 2 : 0,
             y: "50vh",
             duration: 1,
             ease: "circ.out"
@@ -32,7 +32,7 @@ const AnimatedHeaderText = ({subTitle, title, text, textColor, withScrollTrigger
             duration: 1,
             ease: "circ.out"
         }, "<+0.2")
-    }, [])
+    }, {scope : contextRef})
 
     return (
         <div ref={contextRef}>

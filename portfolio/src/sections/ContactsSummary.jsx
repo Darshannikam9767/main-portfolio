@@ -1,8 +1,9 @@
 import { useRef } from 'react'
 import Marquee from '../components/Marquee'
-import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
-
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useGSAP } from '@gsap/react'
+ gsap.registerPlugin(ScrollTrigger)
 const ContactsSummary = () => {
   const containerRef = useRef(null)
   const items = [
@@ -27,13 +28,14 @@ const ContactsSummary = () => {
         scrollTrigger:{
             trigger:containerRef.current,
             start:"center center",
-            end:"+=800 center",
+            end:"+=500 center",
             scrub:0.5,
             pin:true,
-            pinSpacing:true
+            pinSpacing:true,
+            invalidateOnRefresh : true
         }
     })
-  },[])
+  },{scope : containerRef})
     return (
     <section ref={containerRef}
     className='flex flex-col items-center justify-between

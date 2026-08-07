@@ -22,6 +22,10 @@ const Hero = () => {
             <figure className=' absolute inset-0 -z-50 w-screen h-screen'>
                 <Canvas className=' overflow-hidden'
                     dpr={[1, 1.5]}
+                    gl={{
+                        powerPreference: "high-performance",
+                        antialias: true
+                    }}
                     camera={{
                         position: [0, 0, -10],
                         fov: 17.5,

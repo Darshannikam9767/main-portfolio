@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -5,74 +6,81 @@ import { useMediaQuery } from 'react-responsive'
 gsap.registerPlugin(ScrollTrigger)
 const Services = () => {
 
-    const isMobile = useMediaQuery({maxWidth:768})
+    const isMobile = useMediaQuery({ maxWidth: 768 })
+    const sectionRef = useRef(null);
+    const title1Ref = useRef(null);
+    const title2Ref = useRef(null);
+    const title3Ref = useRef(null);
+    const title4Ref = useRef(null);
 
     useGSAP(() => {
-        gsap.to("#title-service-1", {
+        gsap.to(title1Ref.current, {
             xPercent: 20,
             scrollTrigger: {
-                target: "#title-service-1",
+                trigger: title1Ref.current,
                 scrub: true,
 
             }
         })
 
-        gsap.to("#title-service-2", {
+        gsap.to(title2Ref.current, {
             xPercent: -30,
             scrollTrigger: {
-                target: "#title-service-2",
+                trigger: title2Ref.current,
                 scrub: true,
 
             }
         })
 
-        gsap.to("#title-service-3", {
-            xPercent: isMobile? 300 : 100,
+        gsap.to(title3Ref.current, {
+            xPercent: isMobile ? 300 : 30,
             scrollTrigger: {
-                target: "#title-service-3",
+                trigger: title3Ref.current,
                 scrub: true,
 
             }
         })
 
-        gsap.to("#title-service-4", {
-            xPercent: isMobile ? -200 : -100,
+        gsap.to(title4Ref.current, {
+            xPercent: isMobile ? -200 : -30,
             scrollTrigger: {
-                target: "#title-service-4",
+                trigger: title4Ref.current,
                 scrub: true,
 
             }
         })
-    }, [])
+    }, {scope : sectionRef, dependencies: [isMobile]})
 
 
-    
+
 
     return (
-        <section className='mt-20 overflow-hidden font-light leading-snug text-center mb-42 contact-text-responsive'>
+        <section ref={sectionRef} className='mt-20 overflow-hidden font-light leading-snug text-center mb-42 contact-text-responsive'>
 
-            <div id='title-service-1'>
+            <div ref={title1Ref}>
                 <p className=' font-extralight'>Architecture</p>
             </div>
 
-            <div id='title-service-2'
+            <div ref={title2Ref}
                 className='flex items-center justify-center gap-3 translate-x-13'>
                 <p className='font-semibold'>Development</p>
-                
+
                 <div className='bg-gold w-10 h-1 md:w-32 rounded-full' />
                 <p className='font-extralight'>Deployment</p>
             </div>
 
-            <div id='title-service-3' className='flex items-center justify-center gap-3 -translate-x-40'>
+            <div ref={title3Ref}
+                className='flex items-center justify-center gap-3 -translate-x-40'>
                 <p>APIs</p>
-                
+
                 <div className='bg-gold w-10 h-1 md:w-32 rounded-full' />
                 <p className=' italic'>Frontend</p>
                 <div className='bg-gold w-10 h-1 md:w-32 rounded-full' />
                 <p>Automation</p>
             </div>
 
-            <div id='title-service-4' className='translate-x-42'>
+            <div ref={title4Ref}
+                className='translate-x-42'>
                 <p>Databases</p>
             </div>
         </section>

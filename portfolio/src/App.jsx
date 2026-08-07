@@ -35,7 +35,7 @@ const App = () => {
             Loading {Math.floor(progress)} %
           </p>
             <div className='h-1 rounded bg-white/20 w-60  relative flex items-center'>
-              <div className='h-1.5 absolute  top-0 left-0 transition-all duration-1000 bg-white rounded' 
+              <div className='h-1.5 absolute  top-0 left-0 transition-all duration-300 bg-white rounded' 
               style={{
                 width:`${progress}%`
               }} />

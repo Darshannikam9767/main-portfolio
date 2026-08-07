@@ -1,9 +1,7 @@
 import { Icon } from '@iconify/react'
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import gsap from 'gsap'
-import { Observer } from 'gsap/Observer'
 import { useGSAP } from '@gsap/react'
-gsap.registerPlugin(Observer)
 const Marquee = ({
     items,
     className = "text-white bg-black",
@@ -26,7 +24,7 @@ const Marquee = ({
                 repeat: -1,
                 ease: "none"
             })
-    }, [reverse])
+    }, {scope : spanRef , dependencies:[reverse]})
 
 
     return (

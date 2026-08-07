@@ -3,61 +3,70 @@ import { useRef } from 'react'
 import AnimatedHeaderText from '../components/AnimatedHeaderText'
 import { servicesData } from '../constants'
 import gsap from 'gsap'
-import {useGSAP} from '@gsap/react'
-import {ScrollTrigger} from 'gsap/ScrollTrigger'
+import { useGSAP } from '@gsap/react'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 const Services = () => {
   const text = `I build secure, well-structured full -
   stack apps with clean code and smooth
   ux-no shortcuts, no headaches.`
   const serviceRef = useRef([])
-  
+  serviceRef.current = [];
+  const sectionRef = useRef(null)
 
 
-    useGSAP(()=>{
+  useGSAP(() => {
 
 
-      gsap.from("#services",{
-        scale:0.90,
-        ease:"power1.inOut",
-        scrollTrigger:{
-          trigger:"#services",
+    gsap.from(sectionRef.current, {
+      scale: 0.90,
+      ease: "power1.inOut",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 80%",
+        end: "top 20%",
+        scrub: true,
+        invalidateOnRefresh: true
+      }
+    })
+
+
+    serviceRef.current.forEach((el) => {
+      if (!el) return;
+
+      gsap.from(el, {
+        opacity: 0,
+        y: 40,
+        duration: 0.8,
+        force3D: true,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: el,
           start: "top 80%",
-                end: "top 20%",
-                scrub: true,
+          invalidateOnRefresh: true,
+          once: true,
         }
       })
-
-
-      serviceRef.current.forEach((el)=>{
-        if(!el) return;
-
-        gsap.from(el,{
-          opacity:0.50,
-          stagger:0.4,
-          scrollTrigger:{
-            trigger:el,
-            start:"top 80%"
-          },
-          // duration:1,
-          ease:"circ.out"
-        })
-      })
-    },[])
+    })
+  }, { scope: sectionRef })
 
   return (
-    <section id='services' className='min-h-screen bg-black rounded-t-4xl isolate'>
+    <section
+      ref={sectionRef}
+      id='services' className='min-h-screen bg-black rounded-t-4xl isolate'>
       <AnimatedHeaderText subTitle={"Behind the scene, Beyond the screen"} title={"Service"} text={text} textColor={"text-white"} withScrollTrigger={true} />
       {
         servicesData.map((service, index) => (
           <div
-            ref={(el) => (serviceRef.current[index] = el)}
+            ref={(el) => {
+              if (el) serviceRef.current[index] = el;
+            }}
             key={index}
             className=' sticky px-10 pt-6 pb-12 text-white bg-black border-t-2 border-white/30'
             style={{
-                top: 0,
-                zIndex: index + 1
-              }}>
+              top: 0,
+              zIndex: index + 1
+            }}>
             <div className='flex items-center justify-between gap-4 font-light'>
               <div className='flex flex-col gap-6'>
                 <h2 className='text-4xl lg:text-5xl'>{service.title}</h2>

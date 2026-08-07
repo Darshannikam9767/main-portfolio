@@ -4,7 +4,7 @@ import { projects } from "../constants"
 import { Icon } from '@iconify/react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
-import {ScrollTrigger} from 'gsap/ScrollTrigger'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 const Work = () => {
 
@@ -12,39 +12,44 @@ const Work = () => {
   and hard work to solve real problems,
   delivering truly great result.`
 
+  const sectionRef = useRef(null)
+  const projectRefs = useRef([]);
   const previewRef = useRef(null)
+  projectRefs.current = [];
+
   const [currentIndex, setCurrentIndex] = useState(null)
   const moveX = useRef(null)
   const moveY = useRef(null)
   const overlayRef = useRef([])
+  overlayRef.current = [];
   const mouse = useRef({
-    x:0,
-    y:0
+    x: 0,
+    y: 0
   })
 
-  useGSAP(()=>{
-    moveX.current = gsap.quickTo(previewRef.current,"x",{
-      duration:1.5,
-      ease:"power3.out"
+  useGSAP(() => {
+    moveX.current = gsap.quickTo(previewRef.current, "x", {
+      duration: 1.5,
+      ease: "power3.out"
     })
 
-    moveY.current = gsap.quickTo(previewRef.current,"y",{
-      duration:2,
-      ease:"power3.out"
+    moveY.current = gsap.quickTo(previewRef.current, "y", {
+      duration: 2,
+      ease: "power3.out"
     })
 
-    gsap.from("#project",{
-      y:100,
-      opacity:0,
-      delay:0.5,
-      duration:1,
-      stagger:0.3,
-      ease:"back.out",
-      scrollTrigger:{
-        trigger:"#project"
+    gsap.from(projectRefs.current, {
+      y: 100,
+      opacity: 0,
+      stagger: 0.3,
+      ease: "back.out",
+      scrollTrigger: {
+        trigger: projectRefs.current[0],
+        start: "top 80%",
+        once: true
       }
-    })
-  },[])
+    });
+  }, { scope: sectionRef })
 
 
   const handleMouseEnter = (index) => {
@@ -52,17 +57,17 @@ const Work = () => {
     setCurrentIndex(index)
 
     const el = overlayRef.current[index]
-    if(!el) return
+    if (!el) return
 
     gsap.killTweensOf(el)
     gsap.fromTo(el,
       {
-        clipPath:"polygon(0 100%, 100% 100%, 100% 100%, 0 100%)"
+        clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)"
       },
       {
-        clipPath:"polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
-        duration:0.15,
-        ease:"power2.out"
+        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
+        duration: 0.15,
+        ease: "power2.out"
       }
     )
 
@@ -70,6 +75,7 @@ const Work = () => {
       opacity: 1,
       duration: 0.4,
       scale: 1,
+      force3D: true,
       ease: "power2.out"
     })
 
@@ -80,27 +86,28 @@ const Work = () => {
     setCurrentIndex(null)
 
     const el = overlayRef.current[index]
-    if(!el) return
+    if (!el) return
 
     gsap.killTweensOf(el)
-    gsap.to(el,{
-        clipPath:"polygon(0 100%, 100% 100%, 100% 100%, 0 100%)",
-        duration:0.20,
-        ease:"power2.out"
-      },
-      
+    gsap.to(el, {
+      clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)",
+      duration: 0.20,
+      ease: "power2.out"
+    },
+
     )
 
     gsap.to(previewRef.current, {
       opacity: 0,
       duration: 0.4,
       scale: 0.90,
+      force3D: true,
       ease: "power2.out"
     })
 
   }
 
-  const handleMouseMove = (e)=>{
+  const handleMouseMove = (e) => {
     if (window.innerWidth < 768) return;
     mouse.current.x = e.clientX + 24
     mouse.current.y = e.clientY + 24
@@ -108,7 +115,9 @@ const Work = () => {
     moveY.current(mouse.current.y)
   }
   return (
-    <section id='work' className='min-h-screen
+    <section
+      ref={sectionRef}
+      id='work' className='min-h-screen
     flex flex-col'>
       <AnimatedHeaderText
         subTitle={"Logic meets Aesthetics, Seamlessly"}
@@ -117,19 +126,24 @@ const Work = () => {
         textColor={"text-black"}
         withScrollTrigger={true} />
 
-      <div 
-      className="relative flex flex-col font-light"
-      onMouseMove={handleMouseMove}>
+      <div
+        className="relative flex flex-col font-light"
+        onMouseMove={handleMouseMove}>
         {projects.map((project, index) => (
-          <div key={project.id} id="project"
+          <div key={project.id}
+            ref={(el) => {
+              if (el) projectRefs.current[index] = el;
+            }}
             className=" relative flex flex-col gap-1 py-5 cursor-pointer group md:gap-0"
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={() => handleMouseLeave(index)}
-            >
-            
+          >
+
             {/* overlay */}
             <div className="absolute inset-0 hidden md:block duration-200 bg-black -z-10 clip-path"
-            ref={(el)=>{overlayRef.current[index]=el}}/>
+              ref={(el) => {
+                if (el) overlayRef.current[index] = el;
+              }} />
             {/* title */}
             <div className=" flex flex-row items-center justify-between px-10 text-black transition-all duration-500 md:group-hover:px-12 md:group-hover:text-white">
               <h2 className=" lg:text-[32px] text-[26px] leading-none">{project.name}</h2>

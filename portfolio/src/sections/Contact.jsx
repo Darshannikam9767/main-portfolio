@@ -4,9 +4,14 @@ import { socials } from '../constants'
 import Marquee from '../components/Marquee'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
-import {ScrollTrigger} from 'gsap/ScrollTrigger'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useRef } from 'react'
 gsap.registerPlugin(ScrollTrigger)
 const Contact = () => {
+  const sectionRef = useRef(null)
+  const socialRefs = useRef([])
+
+  socialRefs.current = [];
   const text = `Got a question, how or project Idea?
   WE'D love to hear from you and discuss further!`
   const items = [
@@ -17,22 +22,27 @@ const Contact = () => {
     "just imagine, I code",
   ]
 
-  useGSAP(()=>{
-    gsap.from(".social-link",{
-      y:100,
-      opacity:0,
-      delay:0.6,
-      duration:1,
-      stagger:0.3,
-      ease:"back.out",
-      scrollTrigger:{
-        trigger:".social-link"
+  useGSAP(() => {
+    gsap.from(socialRefs.current, {
+      y: 100,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.3,
+      ease: "back.out",
+      force3D: true,
+      scrollTrigger: {
+        trigger: socialRefs.current[0],
+        start: "top 80%",
+        once: true,
+        invalidateOnRefresh: true
       }
-    })
-  },[])
+    });
+  }, { scope: sectionRef });
 
   return (
-    <section id='contact' className=' flex flex-col justify-between min-h-screen bg-black'>
+    <section
+      ref={sectionRef}
+      id='contact' className=' flex flex-col justify-between min-h-screen bg-black'>
       <div>
         <AnimatedHeaderText
           subTitle={"You Dream It, I Code it"}
@@ -44,7 +54,9 @@ const Contact = () => {
         <div className='flex px-10 font-light text-white uppercase lg:text-[32px] text-[26px] leading-none mb-10'>
           <div className='flex flex-col w-full gap-10'>
 
-            <div className='social-link'>
+            <div ref={(el) => {
+              if (el) socialRefs.current[0] = el
+            }}>
               <h2>E-mail</h2>
               <div className='w-full h-px my-2 bg-white/30' />
               <p className='text-xl tracking-wider lowercase md:text-2xl lg:text-3xl'>
@@ -52,7 +64,9 @@ const Contact = () => {
               </p>
             </div>
 
-            <div className='social-link'>
+            <div ref={(el) => {
+              if (el) socialRefs.current[1] = el
+            }}>
               <h2>Phone</h2>
               <div className='w-full h-px my-2 bg-white/30' />
               <p className='text-xl tracking-widest md:text-2xl lg:text-3xl'>
@@ -60,7 +74,9 @@ const Contact = () => {
               </p>
             </div>
 
-            <div className='social-link'>
+            <div ref={(el) => {
+              if (el) socialRefs.current[2] = el
+            }}>
               <h2>Social Media</h2>
               <div className='w-full h-px my-2 bg-white/30' />
               <div className='flex flex-wrap gap-2'>
@@ -73,7 +89,7 @@ const Contact = () => {
         </div>
       </div>
 
-      <Marquee  items={items} className='text-white bg-transparent' />
+      <Marquee items={items} className='text-white bg-transparent' />
     </section>
   )
 }

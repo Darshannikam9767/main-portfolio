@@ -2,10 +2,11 @@ import { useRef } from "react"
 import AnimatedHeaderText from "../components/AnimatedHeaderText"
 import AnimatedTextLine from "../components/AnimatedTextLine"
 import gsap from 'gsap'
-import {ScrollTrigger} from 'gsap/ScrollTrigger'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from "@gsap/react"
 gsap.registerPlugin(ScrollTrigger)
 const About = () => {
+    const aboutRef = useRef(null)
     const text = `self-directed full-stack developer crafting robust APIs and
     responsive interfaces, delivering scalable solutions
     from prototype to production.`
@@ -20,32 +21,37 @@ const About = () => {
     const imgRef = useRef(null)
 
     useGSAP(() => {
-        gsap.to("#about", {
+        gsap.to(aboutRef.current, {
             scale: 0.90,
+            force3D: true,
             scrollTrigger: {
-                trigger: "#about",
+                trigger: aboutRef.current,
                 start: "bottom 80%",
                 end: "bottom 20%",
                 scrub: true,
+                invalidateOnRefresh: true
             },
             ease: "power1.inOut"
         })
 
-        gsap.set(imgRef.current,{
+        gsap.set(imgRef.current, {
             clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"
         })
 
-        gsap.to(imgRef.current,{
+        gsap.to(imgRef.current, {
             clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-            duration:1,
-            scrollTrigger:{
-                trigger:imgRef.current,
+            duration: 1,
+            scrollTrigger: {
+                trigger: imgRef.current,
                 start: "top 50%",
+                invalidateOnRefresh: true
             }
         })
-    }, [])
+    }, { scope: aboutRef })
     return (
-        <section id="about"
+        <section
+            ref={aboutRef}
+            id="about"
             className="min-h-screen bg-black rounded-b-4xl pt-[10vh]">
             <AnimatedHeaderText subTitle={"Code with purpose, Built to scale"} title={"About"} text={text} textColor={"text-white"} withScrollTrigger={true} />
             <div

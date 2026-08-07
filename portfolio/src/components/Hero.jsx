@@ -1,11 +1,12 @@
-import { Suspense, useRef } from 'react'
+import { Suspense, useRef, lazy } from 'react'
 import AnimatedTextLine from './AnimatedTextLine'
 
 import { Canvas } from '@react-three/fiber'
-import { Planet } from './Planet'
 import { useMediaQuery } from 'react-responsive'
 import { Environment, Float, Lightformer } from '@react-three/drei'
 import AnimatedHeaderText from './AnimatedHeaderText'
+
+const Planet = lazy(() => import('./Planet').then(module => ({ default: module.Planet })))
 const Hero = () => {
 
     const isMobile = useMediaQuery({ maxWidth: 853 })

@@ -134,7 +134,7 @@ export const projects = [
       "An administrative dashboard built with Java Servlets designed to oversee institute operations, featuring real-time metrics for active students, revenue tracking, fee management, and recent student activity monitoring.",
     href: "", // TODO: add live demo or GitHub repo link
     image: "/assets/projects/erp_admin.png", // TODO: swap for a real FutureTech ERP screenshot
-    bgImage: "/assets/backgrounds/map.jpg",
+    bgImage: "/assets/backgrounds/curtains.jpg",
     frameworks: [
       { id: 1, name: "Java" },
       { id: 2, name: "Jakarta EE" },
@@ -144,10 +144,9 @@ export const projects = [
   },
 ];
 
-// YouTube removed — not on your resume and previously pointed to the
-// template author's account. Add it back in this same shape if you want it.
+
 export const socials = [
   { name: "GitHub", href: "https://github.com/Darshannikam9767" },
   { name: "LinkedIn", href: "https://linkedin.com/in/darshannikam" },
-  { name: "Instagram", href: "" }, // TODO: add your real Instagram URL
+  { name: "Instagram", href: "https://instagram.com/_coder.web.dev_" },
 ];

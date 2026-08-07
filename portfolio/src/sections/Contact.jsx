@@ -1,4 +1,4 @@
-import React from 'react'
+
 import AnimatedHeaderText from '../components/AnimatedHeaderText'
 import { socials } from '../constants'
 import Marquee from '../components/Marquee'

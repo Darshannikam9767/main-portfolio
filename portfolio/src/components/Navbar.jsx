@@ -91,6 +91,14 @@ const Navbar = () => {
         setIsOpen(!isOpen)
     }
 
+    const closeMenu = () => {
+        if(isOpen){
+            tl.current.reverse()
+            toggleTl.current.reverse()
+            setIsOpen(false)
+        }
+    }
+
     return (
         <>
             <nav ref={navRef} className='w-full h-full fixed z-50 flex flex-col justify-between px-10 uppercase bg-black text-white/60 py-[10vh] sm:py-[5vh] lg:py-[5vh] gap-y-5 md:w-1/2 md:left-1/2'>
@@ -104,6 +112,7 @@ const Navbar = () => {
                                     smooth
                                     offset={0}
                                     duration={600}
+                                    onClick={closeMenu}
                                 >{section}</Link>
                             </div>
                         ))}

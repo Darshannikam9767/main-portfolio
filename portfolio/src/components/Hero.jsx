@@ -13,12 +13,6 @@ const Hero = () => {
     clean code, smart features,
     shipped from idea to production.`
 
-    const dummyClock = {
-        getDelta: () => 0,
-        getElapsedTime: () => 0,
-        start: () => { },
-        stop: () => { }
-    };
 
     return (
         <section id='home'
@@ -26,8 +20,7 @@ const Hero = () => {
             <AnimatedHeaderText subTitle={"404 No bugs found"} title={"Darshan Nikam"} text={text} textColor={"text-black"} isDelay={true} />
             <figure className=' absolute inset-0 -z-50 w-screen h-screen'>
                 <Canvas className=' overflow-hidden'
-                    shadows
-                    clock = {dummyClock}
+                    dpr={[1, 1.5]}
                     camera={{
                         position: [0, 0, -10],
                         fov: 17.5,
@@ -37,7 +30,7 @@ const Hero = () => {
                     <ambientLight intensity={0.5} />
                     <Suspense fallback={null}>
                         <Float speed={0.5}>
-                            <Planet scale={isMobile ? 0.65 : 0.90} />
+                            <Planet scale={isMobile ? 0.60 : 0.90} />
                         </Float>
                     </Suspense>
                     <Environment resolution={256}>

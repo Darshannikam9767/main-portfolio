@@ -111,7 +111,7 @@ const Navbar = () => {
                                     to={`${section}`}
                                     smooth
                                     offset={0}
-                                    duration={600}
+                                    duration={1500}
                                     onClick={closeMenu}
                                 >{section}</Link>
                             </div>

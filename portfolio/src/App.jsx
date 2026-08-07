@@ -16,12 +16,12 @@ const App = () => {
 
   const { progress } = useProgress()
   
-  const [isReady, seIsReady] = useState(false)
+  const [isReady, setIsReady] = useState(false)
 
 
   useEffect(() => {
     if (progress === 100) {
-      seIsReady(true)
+      setIsReady(true)
     }
   }, [progress])
   return (
@@ -43,7 +43,7 @@ const App = () => {
         </div>
       )}
 
-      <div className={`${isReady ? 'opacity-100':'opacity-0 transition-opacity duration-1000'}`}>
+      <div className={`transition-opacity duration-1000 ${isReady ? 'opacity-100':'opacity-0 '}`}>
         <Navbar />
         <Hero />
         <ServiceSummary />

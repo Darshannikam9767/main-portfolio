@@ -3,6 +3,7 @@ import { socials } from '../constants/index'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { Link } from 'react-scroll'
+import { useLenis } from "lenis/react";
 const Navbar = () => {
 
     const navRef = useRef(null)
@@ -14,6 +15,8 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false)
     const toggleTl = useRef(null)
     const [showMenuBtn, setShowMenuBtn] = useState(true)
+     const lenis = useLenis();
+    const lastScrollY = useRef(0)
 
     useGSAP(() => {
         gsap.set(navRef.current, {
@@ -21,7 +24,7 @@ const Navbar = () => {
         })
         gsap.set(linkRef.current, {
             x: -20,
-            autoAlpha: 0
+            autoAlpha: 0,
         })
         gsap.set(contactRef.current, {
             x: -20,
@@ -58,27 +61,30 @@ const Navbar = () => {
             duration: 0.3,
             ease: "power2.inOut"
         }, "<")
-    }, [])
+    }, { scope: navRef })
 
+
+   
 
     useEffect(() => {
-        let lastScrollY = window.scrollY
+        if (!lenis) return;
 
-        const handleScroll = () => {
-            const currentScrollY = window.scrollY
+        const handleScroll = ({ scroll }) => {
+            const current = scroll;
+            const next = current <= lastScrollY.current || current < 10;
 
-            setShowMenuBtn(currentScrollY <= lastScrollY ||
-                currentScrollY < 10
-            )
+            setShowMenuBtn(prev => (prev === next ? prev : next));
 
-            lastScrollY = currentScrollY
-        }
-        window.addEventListener("scroll", handleScroll, {
-            passive: true
-        })
+            lastScrollY.current = current;
+        };
 
-        return () => window.removeEventListener("scroll", handleScroll)
-    }, [])
+        lenis.on("scroll", handleScroll);
+
+        return () => {
+            lenis.off("scroll", handleScroll);
+        };
+    }, [lenis]);
+
 
     const toggleMenu = () => {
         if (isOpen) {
@@ -88,11 +94,11 @@ const Navbar = () => {
             tl.current.play()
             toggleTl.current.play()
         }
-        setIsOpen(!isOpen)
+        setIsOpen(isOpen => !isOpen)
     }
 
     const closeMenu = () => {
-        if(isOpen){
+        if (isOpen) {
             tl.current.reverse()
             toggleTl.current.reverse()
             setIsOpen(false)
@@ -128,7 +134,7 @@ const Navbar = () => {
                         <p className='tracking-wider text-white/50'>Social Media</p>
                         <div className=' flex flex-col flex-wrap md:flex-row gap-x-2'>
                             {socials.map((social, index) => (
-                                <a key={index} className=' leading-loose text-sm tracking-widest uppercase hover:text-white transition-all duration-300'  target="_blank" rel="noopener noreferrer" href={social.href}>
+                                <a key={index} className=' leading-loose text-sm tracking-widest uppercase hover:text-white transition-all duration-300' target="_blank" rel="noopener noreferrer" href={social.href}>
                                     {"{ "}
                                     {social.name}
                                     {" }"}
@@ -142,16 +148,13 @@ const Navbar = () => {
             </nav>
 
             <div
-                style={showMenuBtn ?
-                    { clipPath: "circle(50% at 50% 50%)" }
-                    : { clipPath: "circle(0% at 50% 50%)" }
-                }
-                onClick={toggleMenu} 
-                className=' fixed flex flex-col z-60 items-center justify-center gap-1.5 transition-all duration-300 bg-black rounded-full cursor-pointer w-14 h-14 md:w-20 md:h-20 top-4 right-10 shadow-2xl shadow-black hover:bg-black/80 hover:scale-95 active:scale-115'>
+                onClick={toggleMenu}
+                className={` fixed flex flex-col z-60 items-center justify-center gap-1.5 transition-all duration-300 bg-black rounded-full cursor-pointer w-14 h-14 md:w-20 md:h-20 top-4 right-10 shadow-2xl shadow-black hover:bg-black/80 hover:scale-95 active:scale-115 will-change-transform 
+                    ${showMenuBtn ? "opacity-100 scale-100" : "opacity-0 scale-0 pointer-events-none"}`}>
                 <span ref={topLineRef}
-                    className='block w-7 h-0.5 md:w-11 md:h-1 bg-white rounded-full origin-center'/>
+                    className='block w-7 h-0.5 md:w-11 md:h-1 bg-white rounded-full origin-center' />
                 <span ref={bottomLineRef}
-                    className='block w-7 h-0.5 md:w-11 md:h-1 bg-white rounded-full origin-center'/>
+                    className='block w-7 h-0.5 md:w-11 md:h-1 bg-white rounded-full origin-center' />
             </div>
         </>
     )

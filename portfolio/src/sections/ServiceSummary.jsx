@@ -18,7 +18,7 @@ const Services = () => {
             xPercent: 20,
             scrollTrigger: {
                 trigger: title1Ref.current,
-                scrub: true,
+                scrub: 0.5,
 
             }
         })
@@ -27,25 +27,25 @@ const Services = () => {
             xPercent: -30,
             scrollTrigger: {
                 trigger: title2Ref.current,
-                scrub: true,
+                scrub: 0.5,
 
             }
         })
 
         gsap.to(title3Ref.current, {
-            xPercent: isMobile ? 300 : 30,
+            xPercent: isMobile ? 100 : 30,
             scrollTrigger: {
                 trigger: title3Ref.current,
-                scrub: true,
+                scrub: 0.5,
 
             }
         })
 
         gsap.to(title4Ref.current, {
-            xPercent: isMobile ? -200 : -30,
+            xPercent: isMobile ? -100 : -30,
             scrollTrigger: {
                 trigger: title4Ref.current,
-                scrub: true,
+                scrub: 0.5,
 
             }
         })

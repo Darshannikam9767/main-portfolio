@@ -29,15 +29,12 @@ const App = () => {
     <ReactLenis root
       options={{
         smoothWheel: true,
-        smoothTouch: false, // 👈 Ensures native hardware scrolling on mobile
+        smoothTouch: false, 
         touchMultiplier: 2,
       }}
       className='relative w-screen min-h-screen'>
 
-      {/* 
-        The loader stays in the DOM, but we toggle opacity and pointer-events.
-        Also updated z-999 to the correct Tailwind syntax: z-[999]
-      */}
+      
       <div
         className={`fixed inset-0 z-999 flex flex-col items-center justify-center bg-black text-white transition-opacity duration-700 font-light ${isReady ? 'opacity-0 pointer-events-none' : 'opacity-100'
           }`}

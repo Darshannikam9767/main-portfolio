@@ -10,8 +10,8 @@ gsap.registerPlugin(ScrollTrigger)
 const Contact = () => {
   const sectionRef = useRef(null)
 
-  const text = `Got a question, how or project Idea?
-  WE'D love to hear from you and discuss further!`
+  const text = `Got a question, or a new project Idea?
+  WE'd love to hear from you and discuss further!`
   const items = [
     "just imagine, I code",
     "just imagine, I code",

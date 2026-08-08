@@ -9,9 +9,7 @@ import { useRef } from 'react'
 gsap.registerPlugin(ScrollTrigger)
 const Contact = () => {
   const sectionRef = useRef(null)
-  const socialRefs = useRef([])
 
-  socialRefs.current = [];
   const text = `Got a question, how or project Idea?
   WE'D love to hear from you and discuss further!`
   const items = [
@@ -23,18 +21,15 @@ const Contact = () => {
   ]
 
   useGSAP(() => {
-    gsap.from(socialRefs.current, {
+    gsap.from(".social-items", {
       y: 100,
       opacity: 0,
-      duration: 1,
       stagger: 0.3,
       ease: "back.out",
       force3D: true,
       scrollTrigger: {
-        trigger: socialRefs.current[0],
+        trigger: ".social-items",
         start: "top 80%",
-        once: true,
-        invalidateOnRefresh: true
       }
     });
   }, { scope: sectionRef });
@@ -54,9 +49,7 @@ const Contact = () => {
         <div className='flex px-10 font-light text-white uppercase lg:text-[32px] text-[26px] leading-none mb-10'>
           <div className='flex flex-col w-full gap-10'>
 
-            <div ref={(el) => {
-              if (el) socialRefs.current[0] = el
-            }}>
+            <div className=' social-items'>
               <h2>E-mail</h2>
               <div className='w-full h-px my-2 bg-white/30' />
               <p className='text-xl tracking-wider lowercase md:text-2xl lg:text-3xl'>
@@ -64,9 +57,7 @@ const Contact = () => {
               </p>
             </div>
 
-            <div ref={(el) => {
-              if (el) socialRefs.current[1] = el
-            }}>
+            <div  className=' social-items'>
               <h2>Phone</h2>
               <div className='w-full h-px my-2 bg-white/30' />
               <p className='text-xl tracking-widest md:text-2xl lg:text-3xl'>
@@ -74,9 +65,7 @@ const Contact = () => {
               </p>
             </div>
 
-            <div ref={(el) => {
-              if (el) socialRefs.current[2] = el
-            }}>
+            <div className=' social-items'>
               <h2>Social Media</h2>
               <div className='w-full h-px my-2 bg-white/30' />
               <div className='flex flex-wrap gap-2'>

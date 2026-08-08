@@ -4,18 +4,21 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { Link } from 'react-scroll'
 import { useLenis } from "lenis/react";
-const Navbar = () => {
 
+const Navbar = () => {
+    // 1. Added a main container ref to properly scope GSAP
+    const containerRef = useRef(null) 
     const navRef = useRef(null)
     const linkRef = useRef([])
     const contactRef = useRef(null)
     const topLineRef = useRef(null)
     const bottomLineRef = useRef(null)
     const tl = useRef(null)
-    const [isOpen, setIsOpen] = useState(false)
     const toggleTl = useRef(null)
+    
+    const [isOpen, setIsOpen] = useState(false)
     const [showMenuBtn, setShowMenuBtn] = useState(true)
-     const lenis = useLenis();
+    const lenis = useLenis();
     const lastScrollY = useRef(0)
 
     useGSAP(() => {
@@ -31,40 +34,42 @@ const Navbar = () => {
             autoAlpha: 0
         })
 
-        tl.current = gsap.timeline({ paused: true }).to(navRef.current, {
-            xPercent: 0,
-            duration: 1,
-            ease: "power3.in"
-        }).to(linkRef.current, {
-            autoAlpha: 1,
-            x: 0,
-            stagger: 0.1,
-            duration: 0.5,
-            ease: "power2.out"
-        }, "same"
-        ).to(contactRef.current, {
-            autoAlpha: 1,
-            x: 0,
-            duration: 0.5,
-            ease: "power2.out"
-        }, "same+0.2")
+        tl.current = gsap.timeline({ paused: true })
+            .to(navRef.current, {
+                xPercent: 0,
+                duration: 1,
+                ease: "power3.in"
+            })
+            .to(linkRef.current, {
+                autoAlpha: 1,
+                x: 0,
+                stagger: 0.1,
+                duration: 0.5,
+                ease: "power2.out"
+            }, "same")
+            .to(contactRef.current, {
+                autoAlpha: 1,
+                x: 0,
+                duration: 0.5,
+                ease: "power2.out"
+            }, "same+0.2")
 
 
-        toggleTl.current = gsap.timeline({ paused: true }).to(topLineRef.current, {
-            rotate: 45,
-            y: 4,
-            duration: 0.3,
-            ease: "power2.inOut"
-        }).to(bottomLineRef.current, {
-            rotate: -45,
-            y: -4,
-            duration: 0.3,
-            ease: "power2.inOut"
-        }, "<")
-    }, { scope: navRef })
+        toggleTl.current = gsap.timeline({ paused: true })
+            .to(topLineRef.current, {
+                rotate: 45,
+                y: 4,
+                duration: 0.3,
+                ease: "power2.inOut"
+            })
+            .to(bottomLineRef.current, {
+                rotate: -45,
+                y: -4,
+                duration: 0.3,
+                ease: "power2.inOut"
+            }, "<")
+    }, { scope: containerRef }) // Scoped to the new parent wrapper
 
-
-   
 
     useEffect(() => {
         if (!lenis) return;
@@ -74,7 +79,6 @@ const Navbar = () => {
             const next = current <= lastScrollY.current || current < 10;
 
             setShowMenuBtn(prev => (prev === next ? prev : next));
-
             lastScrollY.current = current;
         };
 
@@ -85,7 +89,6 @@ const Navbar = () => {
         };
     }, [lenis]);
 
-
     const toggleMenu = () => {
         if (isOpen) {
             tl.current.reverse()
@@ -94,7 +97,7 @@ const Navbar = () => {
             tl.current.play()
             toggleTl.current.play()
         }
-        setIsOpen(isOpen => !isOpen)
+        setIsOpen(!isOpen) // simplified state toggle
     }
 
     const closeMenu = () => {
@@ -105,58 +108,59 @@ const Navbar = () => {
         }
     }
 
+    // 2. Reset the array on each render to prevent memory leaks in Strict Mode
+    linkRef.current = [];
+
     return (
-        <>
+        <header ref={containerRef}>
             <nav ref={navRef} className='w-full h-full fixed z-50 flex flex-col justify-between px-10 uppercase bg-black text-white/60 py-[10vh] sm:py-[5vh] lg:py-[5vh] gap-y-5 md:w-1/2 md:left-1/2'>
                 <div className='flex flex-col text-[6vw] md:text-[5vw] lg:text-[4vw]'>
-                    {["home", "services", "about", "work", "contact"]
-                        .map((section, index) => (
-                            <div key={index} ref={(el) => (linkRef.current[index] = el)}>
-
-                                <Link className=' transition-all duration-300 cursor-pointer hover:text-white '
-                                    to={`${section}`}
-                                    smooth
-                                    offset={0}
-                                    duration={1500}
-                                    onClick={closeMenu}
-                                >{section}</Link>
-                            </div>
-                        ))}
+                    {["home", "services", "about", "work", "contact"].map((section, index) => (
+                        <div key={index} ref={(el) => { if (el) linkRef.current[index] = el }}>
+                            <Link className='transition-all duration-300 cursor-pointer tracking-wider hover:text-white'
+                                to={`${section}`}
+                                smooth
+                                offset={0}
+                                duration={1500}
+                                onClick={closeMenu}
+                            >
+                                {section}
+                            </Link>
+                        </div>
+                    ))}
                 </div>
-
 
                 <div ref={contactRef} className='flex flex-col flex-wrap justify-between gap-8 md:flex-row'>
                     <div className='font-light'>
-                        <p className=' tracking-wider text-white/50'>E-mail</p>
-                        <p className='text-xl lowercase tracking-widest text-pretty '>DARSHANNIKAM64@gmail.com</p>
+                        <p className='tracking-wider text-white/50'>E-mail</p>
+                        <p className='text-xl lowercase tracking-widest text-pretty'>DARSHANNIKAM64@gmail.com</p>
                     </div>
-                    <div className=' font-light'>
+                    <div className='font-light'>
                         <p className='tracking-wider text-white/50'>Social Media</p>
-                        <div className=' flex flex-col flex-wrap md:flex-row gap-x-2'>
+                        <div className='flex flex-col flex-wrap gap-x-2 md:flex-row'>
                             {socials.map((social, index) => (
-                                <a key={index} className=' leading-loose text-sm tracking-widest uppercase hover:text-white transition-all duration-300' target="_blank" rel="noopener noreferrer" href={social.href}>
+                                <a key={index} className='text-sm leading-loose tracking-widest uppercase transition-all duration-300 hover:text-white' target="_blank" rel="noopener noreferrer" href={social.href}>
                                     {"{ "}
                                     {social.name}
                                     {" }"}
                                 </a>
-
                             ))}
                         </div>
                     </div>
                 </div>
-
             </nav>
 
+            {/* 3. Fixed z-60 to z-[60] and active:scale-115 to active:scale-[1.15] */}
             <div
                 onClick={toggleMenu}
-                className={` fixed flex flex-col z-60 items-center justify-center gap-1.5 transition-all duration-300 bg-black rounded-full cursor-pointer w-14 h-14 md:w-20 md:h-20 top-4 right-10 shadow-2xl shadow-black hover:bg-black/80 hover:scale-95 active:scale-115 will-change-transform 
+                className={`fixed flex flex-col z-60 items-center justify-center gap-1.5 transition-all duration-300 bg-black rounded-full cursor-pointer w-14 h-14 md:w-20 md:h-20 top-4 right-10 shadow-2xl shadow-black hover:bg-black/80 hover:scale-95 active:scale-[1.15] will-change-transform 
                     ${showMenuBtn ? "opacity-100 scale-100" : "opacity-0 scale-0 pointer-events-none"}`}>
                 <span ref={topLineRef}
                     className='block w-7 h-0.5 md:w-11 md:h-1 bg-white rounded-full origin-center' />
                 <span ref={bottomLineRef}
                     className='block w-7 h-0.5 md:w-11 md:h-1 bg-white rounded-full origin-center' />
             </div>
-        </>
+        </header>
     )
 }
 

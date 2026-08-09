@@ -1,13 +1,11 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { socials } from '../constants/index'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { Link } from 'react-scroll'
-import { useLenis } from "lenis/react";
 
 const Navbar = () => {
-    // 1. Added a main container ref to properly scope GSAP
-    const containerRef = useRef(null) 
+    const containerRef = useRef(null)
     const navRef = useRef(null)
     const linkRef = useRef([])
     const contactRef = useRef(null)
@@ -15,11 +13,8 @@ const Navbar = () => {
     const bottomLineRef = useRef(null)
     const tl = useRef(null)
     const toggleTl = useRef(null)
-    
+
     const [isOpen, setIsOpen] = useState(false)
-    const [showMenuBtn, setShowMenuBtn] = useState(true)
-    const lenis = useLenis();
-    const lastScrollY = useRef(0)
 
     useGSAP(() => {
         gsap.set(navRef.current, {
@@ -54,7 +49,6 @@ const Navbar = () => {
                 ease: "power2.out"
             }, "same+0.2")
 
-
         toggleTl.current = gsap.timeline({ paused: true })
             .to(topLineRef.current, {
                 rotate: 45,
@@ -68,26 +62,7 @@ const Navbar = () => {
                 duration: 0.3,
                 ease: "power2.inOut"
             }, "<")
-    }, { scope: containerRef }) // Scoped to the new parent wrapper
-
-
-    useEffect(() => {
-        if (!lenis) return;
-
-        const handleScroll = ({ scroll }) => {
-            const current = scroll;
-            const next = current <= lastScrollY.current || current < 10;
-
-            setShowMenuBtn(prev => (prev === next ? prev : next));
-            lastScrollY.current = current;
-        };
-
-        lenis.on("scroll", handleScroll);
-
-        return () => {
-            lenis.off("scroll", handleScroll);
-        };
-    }, [lenis]);
+    }, { scope: containerRef })
 
     const toggleMenu = () => {
         if (isOpen) {
@@ -97,7 +72,7 @@ const Navbar = () => {
             tl.current.play()
             toggleTl.current.play()
         }
-        setIsOpen(!isOpen) // simplified state toggle
+        setIsOpen(!isOpen)
     }
 
     const closeMenu = () => {
@@ -108,7 +83,6 @@ const Navbar = () => {
         }
     }
 
-    // 2. Reset the array on each render to prevent memory leaks in Strict Mode
     linkRef.current = [];
 
     return (
@@ -150,15 +124,14 @@ const Navbar = () => {
                 </div>
             </nav>
 
-            {/* 3. Fixed z-60 to z-[60] and active:scale-115 to active:scale-[1.15] */}
+            {/* Permanent Fixed Hamburger Menu Button */}
             <div
                 onClick={toggleMenu}
-                className={`fixed flex flex-col z-60 items-center justify-center gap-1.5 transition-all duration-300 bg-black rounded-full cursor-pointer w-14 h-14 md:w-20 md:h-20 top-4 right-10 shadow-2xl shadow-black hover:bg-black/80 hover:scale-95 active:scale-[1.15] will-change-transform 
-                    ${showMenuBtn ? "opacity-100 scale-100" : "opacity-0 scale-0 pointer-events-none"}`}>
+                className='fixed flex flex-col z-60 items-center justify-center gap-1.5 transition-all duration-300 bg-white mix-blend-difference rounded-full cursor-pointer w-14 h-14 md:w-20 md:h-20 top-4 right-10 shadow-2xl hover:scale-95 active:scale-[1.15]  will-change-transform'>
                 <span ref={topLineRef}
-                    className='block w-7 h-0.5 md:w-11 md:h-1 bg-white rounded-full origin-center' />
+                    className='block w-7 h-0.5 md:w-11 md:h-1 bg-white rounded-full origin-center mix-blend-difference' />
                 <span ref={bottomLineRef}
-                    className='block w-7 h-0.5 md:w-11 md:h-1 bg-white rounded-full origin-center' />
+                    className='block w-7 h-0.5 md:w-11 md:h-1 bg-white rounded-full origin-center mix-blend-difference' />
             </div>
         </header>
     )

@@ -37,7 +37,9 @@ const Hero = () => {
 
                     <Suspense fallback={null}>
                         {isMobile ? (
-                            <Planet scale={0.60} />
+                            <Float speed={0.3}>
+                                <Planet scale={0.60} />
+                            </Float>
                         ) : (
                             <Float speed={0.5}>
                                 <Planet scale={0.90} />

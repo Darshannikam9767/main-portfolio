@@ -26,27 +26,40 @@ const ContactsSummary = () => {
   ]
 
   useGSAP(() => {
-    ScrollTrigger.create({
-      trigger: containerRef.current,
-      start: "center center",
-      end: "+=500 center",
-      scrub: 0.5,
-      pin: true,
-      pinSpacing: true,
-      invalidateOnRefresh: true
-    })
+    
+    gsap.fromTo(
+      '.contact-content',
+      { 
+        scale: 0.35, 
+        opacity: 0.1 
+      },
+      {
+        scale: 1,
+        opacity: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'center center',
+          end: '+=800 center', 
+          scrub: 4, 
+          pin: true,
+          pinSpacing: true,
+          invalidateOnRefresh: true,
+        },
+      }
+    )
   }, { scope: containerRef })
 
   return (
     <section 
       ref={containerRef}
-      className='flex flex-col items-center justify-between min-h-screen gap-12 mt-16 will-change-transform'
+      className='flex flex-col items-center justify-between min-h-screen gap-12 mt-16 will-change-transform overflow-hidden'
     >
       {/* Top Marquee */}
       <Marquee items={items} />
 
-      {/* Central Statement */}
-      <div className='overflow-hidden text-center font-light contact-text-responsive'>
+      {/* Central Statement wrapper with target class for GSAP */}
+      <div className='contact-content overflow-hidden text-center font-light contact-text-responsive'>
         <p>
           "Let's build a <br/>
           <span className='font-normal'>memorable</span> & {" "}
@@ -67,4 +80,4 @@ const ContactsSummary = () => {
   )
 }
 
-export default ContactsSummary 
+export default ContactsSummary

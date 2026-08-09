@@ -53,7 +53,7 @@ const Work = () => {
 
 
   const handleMouseEnter = (index) => {
-    if (window.innerWidth < 768) return;
+    if (window.innerWidth < 1024) return;
     setCurrentIndex(index)
 
     const el = overlayRef.current[index]
@@ -82,7 +82,7 @@ const Work = () => {
   }
 
   const handleMouseLeave = (index) => {
-    if (window.innerWidth < 768) return;
+    if (window.innerWidth < 1024) return;
     setCurrentIndex(null)
 
     const el = overlayRef.current[index]
@@ -108,7 +108,7 @@ const Work = () => {
   }
 
   const handleMouseMove = (e) => {
-    if (window.innerWidth < 768) return;
+    if (window.innerWidth < 1024) return;
     mouse.current.x = e.clientX + 24
     mouse.current.y = e.clientY + 24
     moveX.current(mouse.current.x)
@@ -145,23 +145,23 @@ const Work = () => {
                 if (el) overlayRef.current[index] = el;
               }} />
             {/* title */}
-            <div className=" flex flex-row items-center justify-between px-10 text-black transition-all duration-500 md:group-hover:px-12 md:group-hover:text-white">
+            <div className=" flex flex-row items-center justify-between px-10 text-black transition-all duration-500 lg:group-hover:px-12 lg:group-hover:text-white">
               <h2 className=" lg:text-[32px] text-[26px] leading-none">{project.name}</h2>
               <Icon icon="lucide:arrow-up-right" className="md:size-6 size-5" />
             </div>
             <div className="w-full h-0.5 bg-black/80" />
 
-            <div className="flex px-10 text-xs leading-loose uppercase transition-all duration-500 md:text-sm gap-x-5 md:group-hover:px-12">
+            <div className="flex px-10 text-xs leading-loose uppercase transition-all duration-500 md:text-sm gap-x-5 lg:group-hover:px-12">
               {project.frameworks.map((framework) => (
                 <p key={framework.id}
-                  className="text-black transition-colors duration-500 md:group-hover:text-white">
+                  className="text-black transition-colors duration-500 lg:group-hover:text-white">
                   {framework.name}
                 </p>
               ))}
             </div>
 
             {/* mobile preview images */}
-            <div className="relative flex items-center justify-center px-10 md:hidden h-100">
+            <div className="relative flex items-center justify-center px-10 lg:hidden h-100">
               <img src={project.bgImage}
                 alt={`${project.name}-bg-image`}
                 className=" object-cover w-full h-full rounded-lg brightness-50" />

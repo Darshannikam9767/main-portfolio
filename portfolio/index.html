@@ -2,13 +2,67 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/favicon.png"  />
-    <link rel="apple-touch-icon" href="/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio | Darshan Nikam</title>
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <meta
+      name="description"
+      content="Portfolio of Darshan Nikam – Full-Stack Developer specializing in modern web applications, interactive 3D UI, robust backend architectures, and high-performance engineering."
+    />
+
+    <meta
+      name="theme-color"
+      content="#000000"
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="/favicon.png"
+    />
+
+    <link
+      rel="apple-touch-icon"
+      href="/favicon.png"
+    />
+
+    <!-- Critical Hero 3D Model -->
+    <link
+      rel="preload"
+      href="/models/Planet.glb"
+      as="fetch"
+      crossorigin="anonymous"
+    />
+
+    <!-- Open Graph -->
+    <meta
+      property="og:title"
+      content="Darshan Nikam | Full-Stack Developer"
+    />
+
+    <meta
+      property="og:description"
+      content="Full-Stack Developer building modern web applications, APIs, interactive 3D interfaces, and scalable backend systems."
+    />
+
+    <meta
+      property="og:type"
+      content="website"
+    />
+
+    <title>Darshan Nikam | Full-Stack Developer</title>
   </head>
-  <body>
+
+  <body class="bg-black">
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+
+    <script
+      type="module"
+      src="/src/main.jsx"
+    ></script>
   </body>
 </html>

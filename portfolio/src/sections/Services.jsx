@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger)
 const Services = () => {
   const sectionRef = useRef(null)
 
-  const text = `I build secure, well-structured full-stack apps with clean code and smooth ux—no shortcuts, no headaches.`
+  const text = `I build secure, well-structured full-stack\n apps with clean code and smooth ux—no\n shortcuts, no headaches.`
 
   useGSAP(
     () => {

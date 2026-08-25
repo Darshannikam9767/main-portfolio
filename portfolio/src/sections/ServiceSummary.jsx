@@ -6,7 +6,7 @@ import { useMediaQuery } from 'react-responsive'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const Services = () => {
+const ServiceSummary = () => {
   const isMobile = useMediaQuery({ maxWidth: 768 })
 
   const sectionRef = useRef(null)
@@ -127,4 +127,4 @@ const Services = () => {
   )
 }
 
-export default Services
+export default ServiceSummary

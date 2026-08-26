@@ -47,7 +47,7 @@ const App = () => {
       {!shouldUnmountLoader && (
         <div
           aria-hidden={isReady}
-          className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-black text-white transition-opacity duration-700 font-light ${
+          className={`fixed inset-0 z-99 flex flex-col items-center justify-center bg-black text-white transition-opacity duration-700 font-light ${
             isReady
               ? 'opacity-0 pointer-events-none'
               : 'opacity-100'

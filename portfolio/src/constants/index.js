@@ -86,8 +86,8 @@ export const projects = [
     description:
       "An AI-powered chatbot for college FAQs, built on a Flask REST API with 12+ endpoints. Uses TF-IDF and cosine similarity for intent matching, with unmatched queries auto-logged for continuous improvement.",
     href: "", // TODO: add live demo or GitHub repo link
-    image: "/assets/projects/chat_side.png", // TODO: swap for a real Campus Buddy screenshot
-    bgImage: "/assets/backgrounds/blanket.jpg",
+    image: "/assets/projects/chat_side.webp", // TODO: swap for a real Campus Buddy screenshot
+    bgImage: "/assets/backgrounds/blanket.webp",
     frameworks: [
       { id: 1, name: "Flask" },
       { id: 2, name: "PostgreSQL" },
@@ -102,8 +102,8 @@ export const projects = [
     description:
       "A responsive single-page admin panel with full CRUD for FAQs, announcements, teachers, and departments — all powered by the Fetch API with real-time table updates.",
     href: "", // TODO: add live demo or GitHub repo link
-    image: "/assets/projects/admin_side.png", // TODO: swap for a real Admin Dashboard screenshot
-    bgImage: "/assets/backgrounds/table.jpg",
+    image: "/assets/projects/admin_side.webp", // TODO: swap for a real Admin Dashboard screenshot
+    bgImage: "/assets/backgrounds/table.webp",
     frameworks: [
       { id: 1, name: "HTML" },
       { id: 2, name: "CSS" },
@@ -118,8 +118,8 @@ export const projects = [
     description:
       "A student-facing portal built with Java Servlets offering a personalized dashboard to track training progress, view module-wise course completion, manage assignments, and monitor fee history.",
     href: "", // TODO: add live demo or GitHub repo link
-    image: "/assets/projects/erp_student.png", // TODO: swap for a real FutureTech ERP screenshot
-    bgImage: "/assets/backgrounds/map.jpg",
+    image: "/assets/projects/erp_student.webp", // TODO: swap for a real FutureTech ERP screenshot
+    bgImage: "/assets/backgrounds/map.webp",
     frameworks: [
       { id: 1, name: "Java" },
       { id: 2, name: "Jakarta EE" },
@@ -133,8 +133,8 @@ export const projects = [
     description:
       "An administrative dashboard built with Java Servlets designed to oversee institute operations, featuring real-time metrics for active students, revenue tracking, fee management, and recent student activity monitoring.",
     href: "", // TODO: add live demo or GitHub repo link
-    image: "/assets/projects/erp_admin.png", // TODO: swap for a real FutureTech ERP screenshot
-    bgImage: "/assets/backgrounds/curtains.jpg",
+    image: "/assets/projects/erp_admin.webp", // TODO: swap for a real FutureTech ERP screenshot
+    bgImage: "/assets/backgrounds/curtains.webp",
     frameworks: [
       { id: 1, name: "Java" },
       { id: 2, name: "Jakarta EE" },
